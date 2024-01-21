@@ -224,10 +224,10 @@ namespace xcpp
 
         llvm::StringRef OutputFileStr(OutputFile);
         llvm::StringRef ErrorFileStr(ErrorFile);
-        llvm::SmallVector<llvm::Optional<llvm::StringRef>, 16> Redirects = {llvm::NoneType::None, OutputFileStr, ErrorFileStr};
+        llvm::SmallVector<llvm::Optional<llvm::StringRef>, 16> Redirects = {std::nullopt, OutputFileStr, ErrorFileStr};
 
         // Finally run the linker.
-        int ret = llvm::sys::ExecuteAndWait(Compiler, Args, llvm::NoneType::None,
+        int ret = llvm::sys::ExecuteAndWait(Compiler, Args, std::nullopt,
                                             Redirects);
 
         // Read back output and error streams.
