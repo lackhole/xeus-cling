@@ -182,7 +182,7 @@ namespace xcpp
         std::unique_ptr<llvm::raw_pwrite_stream> OS(
             new llvm::raw_fd_ostream(ObjectFD, true));
 
-        auto DataLayout = AST.getTargetInfo().getDataLayout();
+        auto DataLayout = AST.getTargetInfo().getDataLayoutString();
         EmitBackendOutput(CI->getDiagnostics(), HeaderSearchOpts,
                           CodeGenOpts, CI->getTargetOpts(),
                           CI->getLangOpts(), DataLayout, CG->GetModule(),
