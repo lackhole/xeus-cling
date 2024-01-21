@@ -63,8 +63,7 @@ if(LLVM_CONFIG)
         "--bindir"
         "--libdir"
         "--includedir"
-        "--prefix"
-        "--src-root")
+        "--prefix")
     execute_process(COMMAND ${CONFIG_COMMAND}
                     RESULT_VARIABLE HAD_ERROR
                     OUTPUT_VARIABLE CONFIG_OUTPUT)
@@ -86,7 +85,6 @@ list(GET CONFIG_OUTPUT 1 TOOLS_BINARY_DIR)
 list(GET CONFIG_OUTPUT 2 LIBRARY_DIR)
 list(GET CONFIG_OUTPUT 3 INCLUDE_DIR)
 list(GET CONFIG_OUTPUT 4 LLVM_OBJ_ROOT)
-list(GET CONFIG_OUTPUT 5 MAIN_SRC_DIR)
 
 if(NOT MSVC_IDE)
     set(LLVM_ENABLE_ASSERTIONS ${ENABLE_ASSERTIONS} CACHE BOOL "Enable assertions")
@@ -97,7 +95,6 @@ set(LLVM_TOOLS_BINARY_DIR ${TOOLS_BINARY_DIR} CACHE PATH "Path to llvm/bin")
 set(LLVM_LIBRARY_DIR ${LIBRARY_DIR} CACHE PATH "Path to llvm/lib")
 set(LLVM_MAIN_INCLUDE_DIR ${INCLUDE_DIR} CACHE PATH "Path to llvm/include")
 set(LLVM_BINARY_DIR ${LLVM_OBJ_ROOT} CACHE PATH "Path to LLVM build tree")
-set(LLVM_MAIN_SRC_DIR ${MAIN_SRC_DIR} CACHE PATH "Path to LLVM source tree")
 
 include_directories(${LLVM_MAIN_INCLUDE_DIR})
 link_directories(${LLVM_LIBRARY_DIR})
