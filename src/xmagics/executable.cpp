@@ -157,7 +157,9 @@ namespace xcpp
         }
 
         std::unique_ptr<clang::CodeGenerator> CG(clang::CreateLLVMCodeGen(
-            CI->getDiagnostics(), "object", HeaderSearchOpts,
+            CI->getDiagnostics(), "object",
+            &CI->getVirtualFileSystem(),
+            HeaderSearchOpts,
             CI->getPreprocessorOpts(), CodeGenOpts, *Context));
         CG->Initialize(AST);
 
